@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Defines a function that prints a square with the character #."""
+
+
 def print_square(size):
     """Print a square with the character #.
     Args:
@@ -16,4 +18,3 @@ def print_square(size):
         for j in range(size):
             print("#", end="")
         print()
-        
