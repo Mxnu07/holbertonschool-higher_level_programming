@@ -83,22 +83,22 @@ class Rectangle(Base):
                 raise ValueError("y must be >= 0")
             self.__y = value
 
-            def area(self):
-                """Returns the area of rectangle"""
-                return self.width * self.height
+        def area(self):
+            """Returns the area of rectangle"""
+            return self.width * self.height
 
-            def display(self):
-                """Displays the rectangle"""
-                rectangle = self.y * "\n"
-                for i in range(self.height):
-                    rectangle += (" " * self.x)
-                    rectangle += ("#" * self.width) + "\n"
+        def display(self):
+            """Displays the rectangle"""
+            rectangle = self.y * "\n"
+            for i in range(self.height):
+                rectangle += (" " * self.x)
+                rectangle += ("#" * self.width) + "\n"
 
-                print(rectangle, end='')
+            print(rectangle, end='')
 
-            def __str__(self):
-                """Str special method"""
-                return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                               self.x, self.y,
-                                                               self.width,
-                                                               self.height)
+        def __str__(self):
+            """Str special method"""
+            return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                           self.x, self.y,
+                                                           self.width,
+                                                           self.height)
