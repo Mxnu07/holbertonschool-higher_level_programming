@@ -26,31 +26,31 @@ class Rectangle(Base):
             self.__width = value
 
         @property
-        def get_height(self):
+        def height(self):
             """Returns the height of the rectangle."""
             return self.__height
 
         @height.setter
-        def set_height(self, value):
+        def height(self, value):
             """Sets the height of the rectangle."""
             self.__height = value
 
         @property
-        def get_x(self):
+        def x(self):
             """Returns the x of the rectangle."""
             return self.__x
 
         @x.setter
-        def set_x(self, value):
+        def x(self, value):
             """Sets the x of the rectangle."""
             self.__x = value
 
         @property
-        def get_y(self):
+        def y(self):
             """Returns the y of the rectangle"""
             return self.__y
 
         @y.setter
-        def set_y(self, value):
+        def y(self, value):
             """Sets the y of the rectangle"""
             self.__y = value
