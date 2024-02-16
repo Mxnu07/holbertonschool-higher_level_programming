@@ -9,11 +9,11 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initializes the class."""
 
-        super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
         self.__y = y
+        super().__init__(id)
 
         @property
         def width(self):
@@ -70,3 +70,22 @@ class Rectangle(Base):
             if value < 0:
                 raise ValueError("y must be >= 0")
             self.__y = value
+
+            def area(self):
+                """Returns the area of rectangle"""
+                return self.width * self.height
+            
+            def display(self):
+                """Displays the rectangle"""
+                rectangle = self.y * "\n"
+                for i in range(self.height):
+                    rectangle += (" " * self.x)
+                    rectangle += ("#" * self.width) + "\n"
+
+                print(rectangle, end='')
+
+            def __str__(self):
+                """Str special method"""
+                return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
