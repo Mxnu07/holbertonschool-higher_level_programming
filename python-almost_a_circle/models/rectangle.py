@@ -21,9 +21,9 @@ class Rectangle(Base):
             return self.__width
 
         """Setters for width"""
-        def set_width(self, width):
+        def set_width(self, value):
             """Sets the width of the rectangle."""
-            self.__width = width
+            self.__width = value
 
         """Getters for height"""
         def get_height(self):
@@ -31,9 +31,9 @@ class Rectangle(Base):
             return self.__height
 
         """Setters for height"""
-        def set_height(self, height):
+        def set_height(self, value):
             """Sets the height of the rectangle."""
-            self.__height = height
+            self.__height = value
 
         """Getters for x"""
         def get_x(self):
@@ -41,9 +41,9 @@ class Rectangle(Base):
             return self.__x
 
         """Setters for x"""
-        def set_x(self, x):
+        def set_x(self, value):
             """Sets the x of the rectangle."""
-            self.__x = x
+            self.__x = value
 
         """Getter for y"""
         def get_y(self):
@@ -51,6 +51,6 @@ class Rectangle(Base):
             return self.__y
 
         """Setter for y"""
-        def set_y(self, y):
+        def set_y(self, value):
             """Sets the y of the rectangle"""
-            self.__y = y
+            self.__y = value
