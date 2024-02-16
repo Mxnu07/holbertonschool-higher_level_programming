@@ -14,11 +14,6 @@ class Rectangle(Base):
         self.__height = height
         self.__x = x
         self.__y = y
-        if id is None:
-            self.id = Base().id
-        else:
-            self.id = id
-            Base().id += 1
 
         @property
         def width(self):
