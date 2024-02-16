@@ -3,7 +3,7 @@
  in this project."""
 
 
-class Base:
+class Base():
     """Defines a base class."""
     __nb_objects = 0
 
