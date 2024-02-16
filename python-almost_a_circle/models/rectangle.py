@@ -74,7 +74,7 @@ class Rectangle(Base):
             def area(self):
                 """Returns the area of rectangle"""
                 return self.width * self.height
-            
+
             def display(self):
                 """Displays the rectangle"""
                 rectangle = self.y * "\n"
@@ -87,5 +87,6 @@ class Rectangle(Base):
             def __str__(self):
                 """Str special method"""
                 return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                       self.x, self.y,
-                                                       self.width, self.height)
+                                                               self.x, self.y,
+                                                               self.width,
+                                                               self.height)
