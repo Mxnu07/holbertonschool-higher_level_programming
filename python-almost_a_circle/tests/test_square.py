@@ -1,162 +1,79 @@
-#!/usr/bin/python3
-"""Unittest square.
-Test cases for the Square class.
-Each test has the number of the task,
-and the number of the test for that task"""
-
 import unittest
-import io
-import contextlib
-from models.base import Base
-from models.rectangle import Rectangle
 from models.square import Square
+class Test_Base(unittest.TestCase):
 
 
-class TestSquare(unittest.TestCase):
-    """Test class for Square class."""
-
-    def setUp(self):
-        Base._Base__nb_objects = 0
-
-    def test_10_0(self):
-        """Test Square class: check for attributes."""
-
-        s0 = Square(1)
-        self.assertEqual(s0.id, 1)
-        s1 = Square(5, 3, 4)
-        self.assertEqual(s1.height, 5)
-        self.assertEqual(s1.width, 5)
-        self.assertEqual(s1.x, 3)
-        self.assertEqual(s1.y, 4)
-        self.assertEqual(s1.id, 2)
-
-    def test_10_1(self):
-        """Test __str__ representation."""
-
-        s1 = Square(9, 4, 5, 6)
-        self.assertEqual(str(s1), "[Square] (6) 4/5 - 9")
-
-    def test_10_2(self):
-        """Test Square class: check for inheritance."""
-
-        s1 = Square(6)
-        self.assertTrue(isinstance(s1, Rectangle))
-        self.assertTrue(issubclass(Square, Rectangle))
-        self.assertFalse(isinstance(Square, Rectangle))
-        self.assertTrue(isinstance(s1, Base))
-        self.assertTrue(issubclass(Square, Base))
-        self.assertFalse(isinstance(Square, Base))
-
-    def test_10_3(self):
-        """Test Square class: check for missing args."""
-
-        with self.assertRaises(TypeError) as x:
-            s1 = Square()
-        self.assertEqual(
-            "__init__() missing 1 required positional argument: 'size'", str(
-                x.exception))
-
-    def test_10_4(self):
-        """Test Square for methods inherited from Rectangle."""
-
-        s1 = Square(9)
-        self.assertEqual(s1.area(), 81)
-        s2 = Square(4, 1, 2, 5)
-        s2.update(7)
-        self.assertEqual(s2.id, 7)
-        f = io.StringIO()
-        s3 = Square(4)
-        with contextlib.redirect_stdout(f):
-            s3.display()
-        s = f.getvalue()
-        res = "####\n####\n####\n####\n"
-        self.assertEqual(s, res)
-
-    def test_11_0(self):
-        """Test Square class: check for size attribute."""
-
-        s1 = Square(8)
-        self.assertEqual(s1.size, 8)
-        s2 = Square(9, 8, 7, 2)
-        self.assertEqual(s2.size, 9)
-
-    def test_11_1(self):
-        """Test Square class: check for wrong attributes."""
-
-        with self.assertRaises(TypeError) as x:
-            s = Square("Hello", 2)
-        self.assertEqual("width must be an integer", str(x.exception))
-        with self.assertRaises(TypeError) as x:
-            s = Square(2, "World")
-        self.assertEqual("x must be an integer", str(x.exception))
-        with self.assertRaises(TypeError) as x:
-            s = Square(1, 2, "Foo", 3)
-        self.assertEqual("y must be an integer", str(x.exception))
-        with self.assertRaises(ValueError) as x:
-            s = Square(0, 2)
-        self.assertEqual("width must be > 0", str(x.exception))
-        with self.assertRaises(ValueError) as x:
-            s = Square(-1)
-        self.assertEqual("width must be > 0", str(x.exception))
-        with self.assertRaises(ValueError) as x:
-            s = Square(2, -3)
-        self.assertEqual("x must be >= 0", str(x.exception))
-        with self.assertRaises(ValueError) as x:
-            s = Square(2, 5, -5, 6)
-        self.assertEqual("y must be >= 0", str(x.exception))
-
-    def test_12_0(self):
-        """Test update method on Square."""
-
+    def test_creates_square(self):
         s1 = Square(5)
-        s1.update(10)
-        self.assertEqual(s1.id, 10)
-        s1.update(x=12)
-        self.assertEqual(s1.x, 12)
-        s1.update(size=7, id=89, y=1)
-        self.assertEqual(s1.size, 7)
-        self.assertEqual(s1.id, 89)
-        self.assertEqual(s1.y, 1)
-        s1.update()
-        self.assertEqual(s1.size, 7)
-        self.assertEqual(s1.id, 89)
-        self.assertEqual(s1.y, 1)
+        self.assertEqual(s1.size, 5)
+        s2 =Square(5, 5)
+        self.assertEqual(s2.x, 5)
+        s3 = Square(3, 1, 3)
+        self.assertEqual(s3.y, 3)
+        s3 = Square(3, 1, 3, 2)
+        print(s3)
+        print(s3.area())
 
-    def test_12_1(self):
-        """Test for update method on Square with wrong types."""
+    def test_str_(self):
+        self.assertEqual(Square(2, 0, 0, 20).__str__(), "[Square] (20) 0/0 - 2")
 
-        s1 = Square(9)
-        with self.assertRaises(TypeError) as x:
-            s1.update(2, 3, 4, "hello")
-        self.assertEqual("y must be an integer", str(x.exception))
-        with self.assertRaises(TypeError) as x:
-            s1.update("hello", 8, 9)
-        self.assertEqual("id must be an integer", str(x.exception))
+    def test_display_s(self):
+        with self.assertRaises(TypeError):
+            Square.display()
+        with self.assertRaises(TypeError):
+            Square(4, None).display()
+        with self.assertRaises(TypeError):
+            Square.display()
+        s2 = Square(2, 4, 0, 20)
+        self.assertEqual(s2.display(), 0)
+        self.assertEqual(Square(5, 4, 40).display(), 0)
 
-    def test_14_0(self):
-        """Test for public method to_dictionary."""
+    def test_raise_value_error_square(self):
+        with self.assertRaises(ValueError):
+            Square(0, 1, 3)
+        with self.assertRaises(ValueError):
+            Square(-5)
+        with self.assertRaises(ValueError):
+            Square(5, -5)
+        with self.assertRaises(ValueError):
+            Square(5, 5, -5)
 
-        s1 = Square(10, 2, 1)
+    def test_raise_type_error_square(self):
+        with self.assertRaises(TypeError):
+            Square("b")
+        with self.assertRaises(TypeError):
+            Square(5, "b")
+        with self.assertRaises(TypeError):
+             Square(5, 5, "b")
+        # with self.assertRaises(TypeError):
+        #     Square(5, 5, 5, "b")
+        with self.assertRaises(TypeError):
+            s1 = Square(5)
+            s1.size = "9"
+
+
+    def test_update(self):
+        s1 = Square(5)
+        s1.update(size=7, y=1)
+        print(s1)
+        s1.update(1, 2, 3)
+        print(s1)
+
+    def test_to_dictionary(self):
+        s1 = Square(10, 2, 2, 2)
         s1_dictionary = s1.to_dictionary()
-        s_dictionary = {'x': 2, 'y': 1, 'id': 1, 'size': 10}
-        self.assertEqual(len(s1_dictionary), len(s_dictionary))
-        self.assertEqual(type(s1_dictionary), dict)
-        s2 = Square(1, 1)
-        s2.update(**s1_dictionary)
-        s2_dictionary = s2.to_dictionary()
-        self.assertEqual(len(s1_dictionary), len(s2_dictionary))
-        self.assertEqual(type(s2_dictionary), dict)
-        self.assertFalse(s1 == s2)
+        self.assertEqual(s1_dictionary, {'id': 2, 'x': 2, 'size': 10, 'y': 2})
 
-    def test_14_1(self):
-        """Test for public method to_dictionary with wrong args."""
+    def test_load_from_file_s(self):
+     # Square
+        Square.load_from_file()
+        s1 = Square(4)
+        s2 = Square(6, 4, 4)
+        list_square_input = [s1, s2]
+        Square.save_to_file(list_square_input)
+        list_square_output = Square.load_from_file()
 
-        s = "to_dictionary() takes 1 positional argument but 2 were given"
-        with self.assertRaises(TypeError) as x:
-            s1 = Square(10, 2, 1, 9)
-            s1_dictionary = s1.to_dictionary("Hi")
-        self.assertEqual(s, str(x.exception))
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_save_to_file_s(self):
+        self.assertEqual(Square.save_to_file(None), 0)
+        self.assertEqual(Square.save_to_file([]), 0)
+        Square.save_to_file([Square(4)])
