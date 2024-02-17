@@ -27,5 +27,4 @@ class Square(Rectangle):
         """Str special method"""
         return "[Square] ({}) {}/{} - {}/{}".format(self.id,
                                                     self.x, self.y,
-                                                    self.width,
-                                                    self.height)
+                                                    self.width)
