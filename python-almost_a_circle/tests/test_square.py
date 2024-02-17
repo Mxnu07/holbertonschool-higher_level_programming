@@ -1,12 +1,13 @@
 import unittest
 from models.square import Square
-class Test_Base(unittest.TestCase):
 
+
+class Test_Base(unittest.TestCase):
 
     def test_creates_square(self):
         s1 = Square(5)
         self.assertEqual(s1.size, 5)
-        s2 =Square(5, 5)
+        s2 = Square(5, 5)
         self.assertEqual(s2.x, 5)
         s3 = Square(3, 1, 3)
         self.assertEqual(s3.y, 3)
@@ -15,7 +16,8 @@ class Test_Base(unittest.TestCase):
         print(s3.area())
 
     def test_str_(self):
-        self.assertEqual(Square(2, 0, 0, 20).__str__(), "[Square] (20) 0/0 - 2")
+        self.assertEqual(Square(2, 0, 0, 20).__str__(),
+                         "[Square] (20) 0/0 - 2")
 
     def test_display_s(self):
         with self.assertRaises(TypeError):
@@ -44,13 +46,12 @@ class Test_Base(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square(5, "b")
         with self.assertRaises(TypeError):
-             Square(5, 5, "b")
+            Square(5, 5, "b")
         # with self.assertRaises(TypeError):
         #     Square(5, 5, 5, "b")
         with self.assertRaises(TypeError):
             s1 = Square(5)
             s1.size = "9"
-
 
     def test_update(self):
         s1 = Square(5)
@@ -65,7 +66,7 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(s1_dictionary, {'id': 2, 'x': 2, 'size': 10, 'y': 2})
 
     def test_load_from_file_s(self):
-     # Square
+        # Square
         Square.load_from_file()
         s1 = Square(4)
         s2 = Square(6, 4, 4)

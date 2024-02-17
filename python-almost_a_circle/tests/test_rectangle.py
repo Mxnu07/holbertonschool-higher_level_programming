@@ -1,9 +1,12 @@
 import unittest
 from models.rectangle import Rectangle
+
+
 class Test_Base(unittest.TestCase):
 
     def test_str_(self):
-        self.assertEqual(Rectangle(2, 2, 0, 0, 20).__str__(), "[Rectangle] (20) 0/0 - 2/2")
+        self.assertEqual(Rectangle(2, 2, 0, 0, 20).__str__(),
+                         "[Rectangle] (20) 0/0 - 2/2")
 
     def test_check_position(self):
         r2 = Rectangle(4, 2, 0, 0, 20)
@@ -11,7 +14,7 @@ class Test_Base(unittest.TestCase):
         self.assertNotEqual(r2.y, 1)
 
     def test_creates(self):
-        r1 = Rectangle(10,2)
+        r1 = Rectangle(10, 2)
         self.assertEqual(r1.width, 10)
         self.assertEqual(r1.height, 2)
         r2 = Rectangle(4, 2, 0, 0, 20)
@@ -56,11 +59,11 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(r2.display(), 0)
         self.assertEqual(Rectangle(5, 4, 40).display(), 0)
 
-
     def test_to_dictionary(self):
         r1 = Rectangle(10, 2, 0, 0, 20)
         r1_dictionary = r1.to_dictionary()
-        self.assertEqual(r1_dictionary, {'height': 2, 'id': 20, 'width': 10, 'x': 0, 'y': 0})
+        self.assertEqual(r1_dictionary, {'height': 2, 'id': 20,
+                                         'width': 10, 'x': 0, 'y': 0})
 
     def test_str(self):
         r1 = Rectangle(4, 6, 2, 1, 12)

@@ -3,6 +3,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class Test_Base(unittest.TestCase):
 
     def test_change(self):
@@ -45,7 +46,8 @@ class Test_Base(unittest.TestCase):
         self.assertTrue(Base.__dict__.get("from_json_string"), staticmethod)
 
     def test_from_json_string(self):
-        list_input = [{'id': 89, 'width': 10, 'height': 4},{'id': 7, 'width': 1, 'height': 7}]
+        list_input = [{'id': 89, 'width': 10, 'height': 4},
+                      {'id': 7, 'width': 1, 'height': 7}]
         json_list_input = Rectangle.to_json_string(list_input)
         list_output = Rectangle.from_json_string(json_list_input)
 
