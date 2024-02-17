@@ -23,5 +23,5 @@ class Base():
         if list_dictionaries is None or list_dictionaries == []:
             return("[]")
         if (type(list_dictionaries) is not list or
-                not all(type(X) == dict for X in list_dictionaries)):
+            not all(type(X) == dict for X in list_dictionaries)):
             return (json.dumps(list_dictionaries))
