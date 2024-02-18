@@ -110,12 +110,12 @@ class TestBase(unittest.TestCase):
     def test_15_2(self):
         """Test static method to_json_string with wrong number of args."""
 
-        s1 = ("to_json_string() missing 1 required positional argument: " +
+        s1 = ("Base.to_json_string() missing 1 required positional argument: " +
               "'list_dictionaries'")
         with self.assertRaises(TypeError) as x:
             Base.to_json_string()
         self.assertEqual(s1, str(x.exception))
-        s2 = "to_json_string() takes 1 positional argument but 2 were given"
+        s2 = "Base.to_json_string() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as x:
             Base.to_json_string([{1, 2}], [{3, 4}])
         self.assertEqual(s2, str(x.exception))
@@ -176,12 +176,12 @@ class TestBase(unittest.TestCase):
     def test_16_2(self):
         """Test class method save_to_file with wrong args."""
 
-        s1 = ("save_to_file() missing 1 required" +
+        s1 = ("Base.save_to_file() missing 1 required" +
               " positional argument: 'list_objs'")
         with self.assertRaises(TypeError) as x:
             Rectangle.save_to_file()
         self.assertEqual(s1, str(x.exception))
-        s2 = ("save_to_file() takes 2 positional" +
+        s2 = ("Base.save_to_file() takes 2 positional" +
               " arguments but 3 were given")
         with self.assertRaises(TypeError) as x:
             Rectangle.save_to_file([Rectangle(9, 4), Rectangle(8, 9)], 98)
@@ -212,29 +212,29 @@ class TestBase(unittest.TestCase):
 
         with self.assertRaises(TypeError) as x:
             list_output = Rectangle.from_json_string([8, 9])
-        self.assertEqual("json_string must be a string", str(x.exception))
+        self.assertEqual("the JSON object must be str, bytes or bytearray, not list", str(x.exception))
         with self.assertRaises(TypeError) as x:
             list_output = Rectangle.from_json_string(8)
-        self.assertEqual("json_string must be a string", str(x.exception))
+        self.assertEqual("the JSON object must be str, bytes or bytearray, not int", str(x.exception))
         with self.assertRaises(TypeError) as x:
             list_output = Rectangle.from_json_string(9.6)
-        self.assertEqual("json_string must be a string", str(x.exception))
+        self.assertEqual("the JSON object must be str, bytes or bytearray, not float", str(x.exception))
         with self.assertRaises(TypeError) as x:
             list_output = Rectangle.from_json_string((4, 5))
-        self.assertEqual("json_string must be a string", str(x.exception))
+        self.assertEqual("the JSON object must be str, bytes or bytearray, not tuple", str(x.exception))
         with self.assertRaises(TypeError) as x:
             list_output = Rectangle.from_json_string({1: 'Hello', 2: 'Hi'})
-        self.assertEqual("json_string must be a string", str(x.exception))
+        self.assertEqual("the JSON object must be str, bytes or bytearray, not dict", str(x.exception))
 
     def test_17_2(self):
         """Test static method from_json_string with wrong args."""
 
-        s1 = ("from_json_string() missing 1" +
+        s1 = ("Base.from_json_string() missing 1" +
               " required positional argument: 'json_string'")
         with self.assertRaises(TypeError) as x:
             Rectangle.from_json_string()
         self.assertEqual(s1, str(x.exception))
-        s2 = "from_json_string() takes 1 positional argument but 2 were given"
+        s2 = "Base.from_json_string() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as x:
             Rectangle.from_json_string("Hi", 98)
         self.assertEqual(s2, str(x.exception))
@@ -262,7 +262,7 @@ class TestBase(unittest.TestCase):
             r1 = "Hello"
             r2 = Rectangle.create(r1)
         self.assertEqual(
-            "create() takes 1 positional argument but 2 were given", str(
+            "Base.create() takes 1 positional argument but 2 were given", str(
                 x.exception))
 
     def test_19_0(self):
@@ -301,7 +301,7 @@ class TestBase(unittest.TestCase):
     def test_19_2(self):
         """Test class method load_from_file with wrong args."""
 
-        s = "load_from_file() takes 1 positional argument but 2 were given"
+        s = "Base.load_from_file() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as x:
             list_rectangles_output = Rectangle.load_from_file("Hello")
         self.assertEqual(s, str(x.exception))

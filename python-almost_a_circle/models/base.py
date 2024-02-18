@@ -20,10 +20,17 @@ class Base():
     @staticmethod
     def to_json_string(list_dictionaries):
         """Return the JSON string representation"""
-
-        if list_dictionaries is None or list_dictionaries == []:
+        if list_dictionaries is None:
             return "[]"
-        return (json.dumps(list_dictionaries))
+
+        if not isinstance(list_dictionaries, list):
+            raise TypeError("list_dictionaries must be a list of dictionaries")
+        if not all(isinstance(d, dict) for d in list_dictionaries):
+            raise TypeError("list_dictionaries must be a list of dictionaries")
+
+        if list_dictionaries == []:
+            return "[]"
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -41,7 +48,7 @@ class Base():
     def from_json_string(json_string):
         """Return the deserialization of a JSON string"""
 
-        if json_string is None or json_string == "[]":
+        if not json_string:
             return []
         return json.loads(json_string)
 
