@@ -1,4 +1,6 @@
 import unittest
+import sys
+sys.path.append('/Users/manuel/projects/holbertonschool-higher_level_programming/python-almost_a_circle')
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -70,3 +72,6 @@ class Test_Base(unittest.TestCase):
         list_square_input = [s1, s2]
         Square.save_to_file(list_square_input)
         list_square_output = Square.load_from_file()
+
+if __name__ == '__main__':
+    unittest.main()
