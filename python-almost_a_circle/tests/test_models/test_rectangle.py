@@ -1,7 +1,3 @@
-import unittest
-from models.rectangle import Rectangle
-
-
 """Defines unittests for models/rectangle.py.
 
 Unittest classes:
@@ -14,8 +10,7 @@ Unittest classes:
     TestRectangle_area - line 430
     TestRectangle_update_args - line 538
     TestRectangle_update_kwargs - line 676
-    TestRectangle_to_dictionary - line 788
-"""
+    TestRectangle_to_dictionary - line 788"""
 import io
 import sys
 import unittest

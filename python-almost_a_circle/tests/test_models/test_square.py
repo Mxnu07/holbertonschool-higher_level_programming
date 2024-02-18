@@ -1,7 +1,3 @@
-import unittest
-from models.square import Square
-
-
 """Defines unittests for models/square.py.
 
 Unittest classes:
@@ -14,8 +10,7 @@ Unittest classes:
     TestSquare_stdout - line 343
     TestSquare_update_args - line 426
     TestSquare_update_kwargs - line 538
-    TestSquare_to_dictionary - 640
-"""
+    TestSquare_to_dictionary - 640"""
 import io
 import sys
 import unittest
