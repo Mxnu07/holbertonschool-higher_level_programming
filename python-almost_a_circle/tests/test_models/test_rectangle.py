@@ -15,6 +15,7 @@ import io
 import sys
 import unittest
 import sys
+from io import StringIO
 sys.path.append('/Users/manuel/projects/holbertonschool-higher_level_programming/python-almost_a_circle')
 from models.base import Base
 from models.rectangle import Rectangle
