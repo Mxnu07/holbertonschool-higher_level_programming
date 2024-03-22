@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that takes in an argument and displays all 
+"""script that takes in an argument and displays all
 values in the states table"""
 
 
