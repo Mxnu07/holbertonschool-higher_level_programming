@@ -7,6 +7,8 @@ from sys import argv
 
 if __name__ == '__main__':
 
+    state_name = argv[4]
+
     db = sql.connect(host="localhost",
                      port=3306, user=argv[1], passwd=argv[2], db=argv[3], state_name=argv[4])
     cur = db.cursor()
@@ -14,3 +16,4 @@ if __name__ == '__main__':
     rows = cur.fetchall(query)
     for row in rows:
         print(row)
+
