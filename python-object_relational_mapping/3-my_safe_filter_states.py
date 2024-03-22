@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""print all states from the database"""
+
 import MySQLdb as sql
 from sys import argv
 
