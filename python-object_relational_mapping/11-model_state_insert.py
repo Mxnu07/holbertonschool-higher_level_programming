@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""prints the State object with the name passed as argument"""
+"""script that adds the State object “Louisiana” to the database"""
 
 import sys
 from sqlalchemy import create_engine
@@ -12,9 +12,9 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    row = session.query(State).filter(State.name == sys.argv[4]).all()
-    if row != []:
-        print(row[0].id)
-    else:
-        print("Not found")
+    new_state = State(name='Louisiana')
+    session.add(new_state)
+    session.commit()
+    new_obj = session.query(State).order_by(State.id.desc()).first()
+    print(new_obj.id)
     session.close()
